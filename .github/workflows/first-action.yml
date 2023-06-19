@@ -6,5 +6,10 @@ jobs:
     steps:
       - name: Print greeting
         run: echo "Hello World"
+      - name: Work is done
+        run: |
+            echo "Very Work"
+            echo "Much Auto"
+            echo "Wow"
       - name: Print Goodbye
         run: echo "Done - bye!"
