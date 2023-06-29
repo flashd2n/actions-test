@@ -10,6 +10,8 @@ jobs:
         run: echo ${{ github.sha }}
       - name: Output GITHUB_REF
         run: echo ${{ github.ref }}
+      - name: Output Tag NAme
+        run: echo ${{ github.event.tag_name }}
       - name: Output GITHUB_REF
         run: echo "${{ toJson(github) }}"
       - name: Output GITHUB_REF
