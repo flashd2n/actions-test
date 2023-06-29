@@ -11,6 +11,6 @@ jobs:
       - name: Output GITHUB_REF
         run: echo ${{ github.ref }}
       - name: Output GITHUB_REF
-        run: echo "${{ toJson(github) }}""
+        run: echo "${{ toJson(github) }}"
       - name: Output GITHUB_REF
         run: echo "${{ toJson(github.event) }}"
