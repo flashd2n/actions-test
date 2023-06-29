@@ -1,6 +1,12 @@
 name: Deploy Project
 # on: [push, workflow_dispatch]
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The target release version'
+        required: true
+        type: string
 jobs:
   test:
     runs-on: ubuntu-latest
