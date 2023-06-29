@@ -1,0 +1,12 @@
+name: Release
+on:
+  release:
+    types: [released]
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output GITHUB_SHA
+        run: echo "${{ toJson(github.sha) }}"
+      - name: Output GITHUB_REF
+        run: echo "${{ toJson(github.ref) }}"
