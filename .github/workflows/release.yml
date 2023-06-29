@@ -12,7 +12,13 @@ jobs:
         run: echo ${{ github.ref }}
       - name: Output Tag NAme
         run: echo ${{ github.event.release.tag_name }}
+      - name: Output Action
+        run: echo ${{ github.event.action }}
+      - name: Output changes
+        run: echo "${{ toJson(github.event.changes) }}"
       - name: Output GITHUB
         run: echo "${{ toJson(github) }}"
       - name: Output GITHUB_EVENT
         run: echo "${{ toJson(github.event) }}"
+      - name: Output dir
+        run: ls -la
