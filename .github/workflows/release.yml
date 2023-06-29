@@ -10,7 +10,7 @@ jobs:
         run: echo ${{ github.sha }}
       - name: Output GITHUB_REF
         run: echo ${{ github.ref }}
-      - name: Output Tag NAme
+      - name: Output Tag Name
         run: echo ${{ github.event.release.tag_name }}
       - name: Output Action
         run: echo ${{ github.event.action }}
@@ -20,5 +20,9 @@ jobs:
         run: echo "${{ toJson(github) }}"
       - name: Output GITHUB_EVENT
         run: echo "${{ toJson(github.event) }}"
+      - name: Get the code
+        uses: actions/checkout@v1
+        with:
+          ref: ${{ github.ref }}
       - name: Output dir
         run: ls -la
