@@ -1,7 +1,7 @@
 name: Release
 on:
   release:
-    types: [released]
+    types: [released, edited]
 jobs:
   info:
     runs-on: ubuntu-latest
@@ -12,3 +12,5 @@ jobs:
         run: echo ${{ github.ref }}
       - name: Output GITHUB_REF
         run: echo ${{ toJson(github) }}
+      - name: Output GITHUB_REF
+        run: echo ${{ toJson(github.event) }}
