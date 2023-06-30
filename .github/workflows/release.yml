@@ -14,8 +14,8 @@ jobs:
           action-name: ${{ github.event.action }}
           changes: ${{ toJson(github.event.changes) }}
           token: ${{ github.token }}
-          repo-name: ${{ github.repository.name }}
-          repo-owner: ${{ github.repository.owner.login }}
+          repo-name: actions-test
+          repo-owner: flashd2n
       # - name: Output GITHUB_SHA
       #   run: echo ${{ github.sha }}
       # - name: Output GITHUB_REF
