@@ -6,23 +6,59 @@ jobs:
   info:
     runs-on: ubuntu-latest
     steps:
-      - name: Output GITHUB_SHA
-        run: echo ${{ github.sha }}
-      - name: Output GITHUB_REF
-        run: echo ${{ github.ref }}
-      - name: Output Tag Name
-        run: echo ${{ github.event.release.tag_name }}
-      - name: Output Action
-        run: echo ${{ github.event.action }}
-      - name: Output changes
-        run: echo "${{ toJson(github.event.changes) }}"
-      - name: Output GITHUB
-        run: echo "${{ toJson(github) }}"
-      - name: Output GITHUB_EVENT
-        run: echo "${{ toJson(github.event) }}"
-      - name: Get the code
-        uses: actions/checkout@v1
+      - name: Validate the release
+        uses: flashd2n/validate-cloud-release@v0.0.1
         with:
-          ref: ${{ github.ref }}
-      - name: Output dir
-        run: ls -la
+          git-ref: ${{ github.ref }}
+          tag-name: ${{ github.event.release.tag_name }}
+          action-name: ${{ github.event.action }}
+          changes: ${{ toJson(github.event.changes) }}
+      # - name: Output GITHUB_SHA
+      #   run: echo ${{ github.sha }}
+      # - name: Output GITHUB_REF
+      #   run: echo ${{ github.ref }}
+      # - name: Output Tag Name
+      #   run: echo ${{ github.event.release.tag_name }}
+      # - name: Output Action
+      #   run: echo ${{ github.event.action }}
+      # - name: Output changes
+      #   run: echo "${{ toJson(github.event.changes) }}"
+      # - name: Output GITHUB
+      #   run: echo "${{ toJson(github) }}"
+      # - name: Output GITHUB_EVENT
+      #   run: echo "${{ toJson(github.event) }}"
+      # - name: Get the code
+      #   uses: actions/checkout@v1
+      #   with:
+      #     ref: ${{ github.ref }}
+      # - name: Output dir
+        # run: ls -la
+
+# the inputs should be
+#   ref
+#   tagName
+#   actionName
+#   changes
+
+# the actions should be
+#   checkout ref code
+#   validate release
+#     -> if action is released, but the release is not latest -> exit 1 with reason "will not deploy a replease, which is not marked as latest"
+#     -> if action is edited, but changes is not marking this as latest -> 
+#     exit 1 with reason "will not deploy, because the release change does not mark this as latest"
+#   prepare docker image
+#     -> inputs: image uri, tag name
+#     -> if image url with this tag name exists -> this is a rollback -> do nothing
+#     -> if image url with this tag name does not exist -> build and push
+#   deploy k8s cluster
+#     -> inputs: tag name
+#     -> move the kubernetes directory to a temp_kubernetes directory
+#     -> replace the images tags with the input tag
+#     -> kubectl apply -f temp_kubernetes
+
+
+# 3 X action repo
+#   -> github action definition
+#   -> JS source
+#   -> dockerfile
+#   -> dockerfile release script
