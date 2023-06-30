@@ -8,13 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate the release
-        uses: flashd2n/validate-cloud-release@v0.0.5
+        uses: flashd2n/validate-cloud-release@v0.0.6
         with:
           tag-name: ${{ github.event.release.tag_name }}
           action-name: ${{ github.event.action }}
           changes: ${{ toJson(github.event.changes) }}
           token: ${{ github.token }}
           repo-name: ${{ github.repository.name }}
+          repo-owner: ${{ github.repository.owner.login }}
       # - name: Output GITHUB_SHA
       #   run: echo ${{ github.sha }}
       # - name: Output GITHUB_REF
