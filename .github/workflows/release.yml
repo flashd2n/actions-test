@@ -14,12 +14,12 @@ jobs:
           action-name: ${{ github.event.action }}
           changes: ${{ toJson(github.event.changes) }}
           token: ${{ github.token }}
-          repo-name: actions-test
-          repo-owner: flashd2n
-      - name: Output repo info
-        run: echo ${{ toJson(github.repository) }}
-      - name: Output repo owner
-        run: echo ${{ toJson(github.repository_owner) }}
+          repo-name: ${{ github.event.repository.name }}
+          repo-owner: ${{ github.repository_owner }}
+      # - name: Output repo info
+      #   run: echo ${{ toJson(github.event.repository.name) }}
+      # - name: Output repo owner
+      #   run: echo ${{ toJson(github.repository_owner) }}
       # - name: Output GITHUB_SHA
       #   run: echo ${{ github.sha }}
       # - name: Output GITHUB_REF
