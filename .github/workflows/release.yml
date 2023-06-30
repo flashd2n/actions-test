@@ -4,6 +4,7 @@ on:
     types: [released, edited]
 jobs:
   info:
+    permissions: read-all
     runs-on: ubuntu-latest
     steps:
       - name: Validate the release
