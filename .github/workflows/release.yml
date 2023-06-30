@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate the release
-        uses: flashd2n/validate-cloud-release@v0.0.2
+        uses: flashd2n/validate-cloud-release@v0.0.3
         with:
           git-ref: ${{ github.ref }}
           tag-name: ${{ github.event.release.tag_name }}
