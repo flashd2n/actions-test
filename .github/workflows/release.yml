@@ -16,6 +16,10 @@ jobs:
           token: ${{ github.token }}
           repo-name: actions-test
           repo-owner: flashd2n
+      - name: Output repo info
+        run: echo ${{ toJson(github.repository) }}
+      - name: Output repo owner
+        run: echo ${{ toJson(github.repository_owner) }}
       # - name: Output GITHUB_SHA
       #   run: echo ${{ github.sha }}
       # - name: Output GITHUB_REF
