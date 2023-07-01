@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate the release
-        uses: interopio-cloud/validate-cloud-release@1.1.1
+        uses: interopio-cloud/validate-cloud-release@1.2.0
         with:
           tag-name: ${{ github.event.release.tag_name }}
           action-name: ${{ github.event.action }}
